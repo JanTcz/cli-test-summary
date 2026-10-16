@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import * as api from '../src/index.js';
+import { USAGE } from '../src/cli.js';
 
 const json = (p) => JSON.parse(fs.readFileSync(new URL(`../${p}`, import.meta.url), 'utf8'));
 const exists = (p) => fs.existsSync(new URL(`../${p}`, import.meta.url));
@@ -22,25 +23,27 @@ test('both plugin manifests have the package version and point at files that exi
     assert.equal(m.version, pkg.version);
     assert.equal(m.license, pkg.license);
   }
-  for (const p of [codex.skills, codex.mcpServers, codex.interface.composerIcon, codex.interface.logo]) {
+  for (const p of [codex.skills, codex.interface.composerIcon, codex.interface.logo]) {
     assert.match(p, /^\.\//);
     assert.ok(exists(`agents/${p.slice(2)}`), p);
   }
 });
 
-test("the MCP config runs this package's major version", () => {
-  const server = json('agents/.mcp.json').mcpServers[pkg.name];
-  assert.equal(server.command, 'npx');
-  assert.deepEqual(server.args, ['-y', `${pkg.name}@${pkg.version.split('.')[0]}`, 'mcp']);
+test('the plugin is a skill only: the agent runs the CLI in its shell', () => {
+  assert.ok(!exists('agents/.mcp.json'));
+  assert.equal(json('agents/.codex-plugin/plugin.json').mcpServers, undefined);
 });
 
-test('the skill has the frontmatter agents need and names the tools', () => {
+test('the skill has the frontmatter agents need and runs this major version', () => {
   const skill = fs.readFileSync(new URL(`../agents/skills/${pkg.name}/SKILL.md`, import.meta.url), 'utf8');
   const fm = /^---\nname: (.+)\ndescription: (.+)\n---\n/.exec(skill);
   assert.ok(fm);
   assert.equal(fm[1], pkg.name);
   assert.ok(fm[2].length < 1024);
-  for (const tool of api.TOOLS) assert.ok(skill.includes(tool.name), tool.name);
+  const npx = `npx -y ${pkg.name}@${pkg.version.split('.')[0]}`;
+  assert.ok(skill.includes(`${npx} --json`));
+  // Every flag the skill shows exists.
+  for (const flag of new Set(skill.match(/ --[a-z-]+/g))) assert.ok(api.main && USAGE.includes(flag.trim()), flag);
 });
 
 test('the npm package ships the plugin and the reporter', () => {

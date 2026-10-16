@@ -1,7 +1,7 @@
 {
   "name": "cli-test-summary",
   "version": "0.1.0",
-  "description": "Run the project's tests and get one JSON answer: counts and every failure with file, line and message; failures re-run alone to tell real from flaky.",
+  "description": "A skill that has the agent run the tests through cli-test-summary and read the JSON: counts and every failure with file, line and message; failures re-run alone to tell real from flaky.",
   "author": {
     "name": "Jan Truhlar",
     "email": "me@jant.cz",
@@ -10,16 +10,22 @@
   "homepage": "https://github.com/JanTcz/cli-test-summary",
   "repository": "https://github.com/JanTcz/cli-test-summary",
   "license": "MIT",
-  "keywords": ["testing", "test-runner", "flaky-tests", "mcp"],
+  "keywords": [
+    "testing",
+    "test-runner",
+    "flaky-tests",
+    "skill"
+  ],
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "cli-test-summary",
     "shortDescription": "Run the tests, get counts and failures as data",
     "longDescription": "Runs the project's own test command (npm test, pytest, go test, cargo test, dotnet test) and answers with pass/fail counts and every failure with file, line and message, from the runner's machine-readable report. Failures can be re-run one by one to tell a real failure from a flaky one. node:test, vitest, jest, pytest, go, cargo and dotnet.",
     "developerName": "Jan Truhlar",
     "category": "Coding",
-    "capabilities": ["Read"],
+    "capabilities": [
+      "Read"
+    ],
     "websiteURL": "https://github.com/JanTcz/cli-test-summary",
     "defaultPrompt": [
       "Run the tests and tell me what fails.",

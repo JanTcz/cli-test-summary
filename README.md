@@ -53,10 +53,15 @@ failure waved through as "probably flaky".
 - **Real or flaky, with evidence.** `--rerun` runs every failure again on its
   own: `real` (fails alone too), `flaky` (passes alone) or `unresolved`
   (couldn't be run alone, never counted as a pass).
-- **A CLI, an MCP server, and a plugin for Claude Code and Codex** with a skill
-  that tells the agent how to read the result. No dependencies, Node 20+.
+- **A CLI the agent runs in its shell, and a plugin for Claude Code and Codex**:
+  a skill that tells the agent when to run it and how to read the result. No
+  dependencies, Node 20+. (An MCP server too, for clients without a shell.)
 
 ## Getting started
+
+The plugin is a skill: it has the agent run `npx -y cli-test-summary@0 --json`
+in its shell instead of the test command, and read the JSON by its rules
+(`ok` is the verdict, flaky needs a rerun, a filter is not a verdict).
 
 ### Claude Code
 
@@ -64,6 +69,10 @@ failure waved through as "probably flaky".
 /plugin marketplace add JanTcz/marketplace
 /plugin install cli-test-summary@jantcz
 ```
+
+To let it run without asking each time, allow
+`Bash(npx -y cli-test-summary@0:*)` in `/permissions`. It runs the project's
+test command, which runs the project's code, same as `npm test` would.
 
 ### Codex
 
@@ -74,18 +83,11 @@ codex plugin marketplace add JanTcz/marketplace
 then enable `cli-test-summary@jantcz` in the plugin list (or in
 `.codex/config.toml`: `[plugins."cli-test-summary@jantcz"]` with `enabled = true`).
 
-### Any other MCP client
+### Other agents
 
-```json
-{
-  "mcpServers": {
-    "cli-test-summary": { "command": "npx", "args": ["-y", "cli-test-summary@0", "mcp"] }
-  }
-}
-```
-
-The skill is plain [Agent Skills](https://agentskills.io) Markdown:
-[`agents/skills/cli-test-summary/`](agents/skills/cli-test-summary/SKILL.md).
+The skill is plain [Agent Skills](https://agentskills.io) Markdown: copy
+[`agents/skills/cli-test-summary/`](agents/skills/cli-test-summary/SKILL.md)
+into the agent's skills folder.
 
 ### The CLI
 
@@ -187,10 +189,21 @@ cli-test-summary mcp
 | `--json`, `--text` | Force the output format |
 | `-- command ...` | Run this instead (`-- make test`); node:test and pytest reports still work, other runners are read from the text |
 
-## MCP
+## MCP, for clients without a shell
 
+An agent with a shell needs nothing more than the CLI: the plugin doesn't
+start a server. For a client that can only call MCP tools,
 `cli-test-summary mcp` speaks MCP over stdio (protocol versions 2024-11-05 to
-2025-06-18).
+2025-06-18):
+
+```json
+{
+  "mcpServers": {
+    "cli-test-summary": { "command": "npx", "args": ["-y", "cli-test-summary@0", "mcp"] }
+  }
+}
+```
+
 
 | Tool | |
 |---|---|
@@ -222,7 +235,7 @@ src/parse.js            reports and text into counts and failures, for every run
 src/rerun.js            each failure alone: real, flaky, unresolved
 src/reporters/node.mjs  the node:test reporter loaded through NODE_OPTIONS
 src/cli.js src/mcp.js   the command and the MCP server
-agents/                 the plugin: skill, .mcp.json, Claude Code and Codex manifests
+agents/                 the plugin: the skill, Claude Code and Codex manifests
 test/fixtures/          a tiny project per runner, and what the runners really printed
 ```
 
