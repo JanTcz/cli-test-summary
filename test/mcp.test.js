@@ -43,10 +43,10 @@ test('detect_tests and run_tests', async () => {
   const r = await call('run_tests', { cwd: 'node-flaky', rerun: true, max_reruns: 1, timeout_s: 60 });
   assert.deepEqual(r.structuredContent.rerun, { real: 0, flaky: 1, unresolved: 0, not_rerun: 1 });
   assert.deepEqual((await call('run_tests', { cwd: 'node-flaky', rerun: true })).structuredContent.rerun, { real: 1, flaky: 1, unresolved: 0, not_rerun: 0 });
-  const plain = await call('run_tests', { cwd: 'node', filter: 'adds' });
+  const plain = await call('run_tests', { cwd: 'node-flaky', filter: 'fills the cache' });
   assert.equal(plain.structuredContent.ok, true);
   assert.equal(plain.structuredContent.rerun, undefined);
-  const forced = await call('run_tests', { cwd: 'node', runner: 'node', filter: 'adds' });
+  const forced = await call('run_tests', { cwd: 'node-flaky', runner: 'node', filter: 'fills the cache' });
   assert.equal(forced.structuredContent.runner, 'node');
 });
 

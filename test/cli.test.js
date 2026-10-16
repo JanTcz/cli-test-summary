@@ -95,9 +95,10 @@ test('run: --rerun, --filter, --runner, --timeout, a command after --', async ()
   const rerun = await cli(['--cwd=node-flaky', '--rerun', '--max-reruns=5', '--timeout=60']);
   assert.deepEqual(rerun.json().rerun, { real: 1, flaky: 1, unresolved: 0, not_rerun: 0 });
   assert.equal(rerun.code, 1);
-  const filtered = await cli(['--cwd=node', '--filter=adds']);
-  // Files without a matching test are not counted as tests.
-  assert.deepEqual([filtered.code, filtered.json().command, filtered.json().counts], [0, 'node --test --test-name-pattern=adds', { total: 1, passed: 1, failed: 0, skipped: 0, todo: 0, cancelled: 0 }]);
+  // Node 20 reports the tests a filter leaves out as skipped, later versions not at all.
+  const filtered = await cli(['--cwd=node-flaky', '--filter=fills the cache']);
+  const { command, counts } = filtered.json();
+  assert.deepEqual([filtered.code, command, counts.passed, counts.failed], [0, 'node --test "--test-name-pattern=fills the cache"', 1, 0]);
   const own = await cli(['--cwd=node', '--runner=node', '--', process.execPath, '-e', 'process.exit(0)']);
   assert.equal(own.json().ok, true);
 });
