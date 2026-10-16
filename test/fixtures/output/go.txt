@@ -1,0 +1,5 @@
+--- FAIL: TestSubtracts (0.00s)
+    math_test.go:13: 3 - 1 = 2, want 1
+FAIL
+FAIL	example.com/fixture/mathx	0.002s
+FAIL

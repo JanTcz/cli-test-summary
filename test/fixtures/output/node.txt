@@ -1,0 +1,62 @@
+
+> test
+> node --test
+
+▶ db
+  ✖ reads
+✖ db (0.440125ms)
+✔ later (0.097292ms) # TODO
+▶ math
+  ✔ adds (0.337583ms)
+  ✖ subtracts (0.492917ms)
+  ﹣ divides (0.052541ms) # not yet
+✖ math (1.770125ms)
+ℹ tests 5
+ℹ suites 2
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 1
+ℹ skipped 1
+ℹ todo 1
+ℹ duration_ms 58.036833
+
+✖ failing tests:
+
+test at test/hooks.test.js:5:3
+✖ reads
+  'test did not finish before its parent and was cancelled'
+
+test at test/hooks.test.js:3:1
+✖ db (0.440125ms)
+  Error: cannot connect
+      at SuiteContext.<anonymous> (file:///work/node/test/hooks.test.js:4:24)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Suite.runHook (node:internal/test_runner/test:1289:20)
+      at Suite.run (node:internal/test_runner/test:1899:18)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at test/math.test.js:6:3
+✖ subtracts (0.492917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///work/node/test/math.test.js:6:34)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

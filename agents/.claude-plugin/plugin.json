@@ -1,0 +1,14 @@
+{
+  "name": "cli-test-summary",
+  "version": "0.1.0",
+  "description": "Run the project's tests and get one JSON answer: counts and every failure with file, line and message; failures re-run alone to tell real from flaky.",
+  "author": {
+    "name": "Jan Truhlar",
+    "email": "me@jant.cz",
+    "url": "https://github.com/JanTcz"
+  },
+  "homepage": "https://github.com/JanTcz/cli-test-summary",
+  "repository": "https://github.com/JanTcz/cli-test-summary",
+  "license": "MIT",
+  "keywords": ["testing", "test-runner", "flaky-tests", "mcp"]
+}

@@ -1,0 +1,76 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [22, 24, 26]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+      # Every unit test, and 100 % lines, branches and functions of src/.
+      - run: npm test
+
+  # The oldest supported Node: the tests without the coverage gate (its flags came in Node 22).
+  node-20:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+      - run: node --test test/*.test.js
+
+  # The real runners on the fixture projects, each one required.
+  runners:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-go@v6
+        with:
+          go-version: stable
+          cache: false
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '8.0.x'
+      - run: python -m pip install pytest
+      - run: npm ci --prefix test/fixtures/projects/vitest && npm ci --prefix test/fixtures/projects/jest
+      - run: npm run test:integration
+        env:
+          CLI_TEST_SUMMARY_REQUIRE: vitest,jest,pytest,go,cargo,dotnet
+
+  # What npm would publish installs and runs.
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - run: npm pack
+      - run: |
+          cd "$(mktemp -d)"
+          npm install --no-save "$GITHUB_WORKSPACE"/cli-test-summary-*.tgz
+          cp -R "$GITHUB_WORKSPACE"/test/fixtures/projects/node-flaky project
+          out=$(cd project && npx --prefix .. cli-test-summary --rerun || true)
+          echo "$out"
+          echo "$out" | node -e 'const r = JSON.parse(require("fs").readFileSync(0, "utf8")); if (r.rerun.flaky !== 1 || r.rerun.real !== 1) process.exit(1)'
+          test -f node_modules/cli-test-summary/agents/skills/cli-test-summary/SKILL.md
+          echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | npx cli-test-summary mcp | grep -q run_tests

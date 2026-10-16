@@ -1,0 +1,55 @@
+{
+  "name": "cli-test-summary",
+  "version": "0.1.0",
+  "description": "Run a project's tests and get one JSON answer: pass/fail counts and every failure with file, line and message, for node:test, vitest, jest, pytest, go, cargo and dotnet. Re-runs failures alone to tell real from flaky. CLI, MCP server, Claude Code and Codex plugin. No dependencies.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Jan Truhlar <me@jant.cz>",
+  "homepage": "https://github.com/JanTcz/cli-test-summary#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanTcz/cli-test-summary.git"
+  },
+  "bugs": "https://github.com/JanTcz/cli-test-summary/issues",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "cli-test-summary": "./bin/cli-test-summary.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "agents"
+  ],
+  "scripts": {
+    "test": "node --test --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 test/*.test.js",
+    "test:integration": "node --test test/integration/*.test.js"
+  },
+  "keywords": [
+    "test",
+    "testing",
+    "test-runner",
+    "summary",
+    "flaky",
+    "agents",
+    "claude-code",
+    "codex",
+    "mcp",
+    "mcp-server",
+    "vitest",
+    "jest",
+    "pytest",
+    "cli"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

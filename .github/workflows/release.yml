@@ -1,0 +1,39 @@
+# A release from a version tag (v0.2.0): tests, then cli-test-summary on npm.
+# npm publishing uses Trusted Publishing (OIDC): no token in the repository; the package's
+# settings on npmjs.com name this repository and this workflow file.
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write   # OIDC for npm Trusted Publishing and provenance
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          registry-url: https://registry.npmjs.org
+      - name: The tag matches the package and both plugin manifests
+        run: |
+          for f in package.json agents/.claude-plugin/plugin.json agents/.codex-plugin/plugin.json; do
+            test "v$(node -p "require('./$f').version")" = "$GITHUB_REF_NAME" || { echo "$f is not $GITHUB_REF_NAME"; exit 1; }
+          done
+      - run: npm test
+      - run: npm install -g npm@latest   # Trusted Publishing needs npm 11.5.1 or newer
+      - name: Publish unless this version is already on npm
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if npm view "cli-test-summary@$version" version >/dev/null 2>&1; then
+            echo "cli-test-summary@$version is already published"
+          else
+            npm publish --provenance --access public
+          fi

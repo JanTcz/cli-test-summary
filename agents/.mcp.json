@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cli-test-summary": {
+      "command": "npx",
+      "args": ["-y", "cli-test-summary@0", "mcp"]
+    }
+  }
+}

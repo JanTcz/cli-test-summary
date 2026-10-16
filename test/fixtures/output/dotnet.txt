@@ -1,0 +1,23 @@
+  Determining projects to restore...
+  Restored /src/Fixture.Tests.csproj (in 2.38 sec).
+  Fixture.Tests -> /src/bin/Debug/net8.0/Fixture.Tests.dll
+Test run for /src/bin/Debug/net8.0/Fixture.Tests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (arm64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.08]     MathTests.Subtracts [FAIL]
+[xUnit.net 00:00:00.08]     MathTests.Divides [SKIP]
+  Failed MathTests.Subtracts [1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   2
+  Stack Trace:
+     at MathTests.Subtracts() in /src/MathTests.cs:line 9
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Skipped MathTests.Divides [1 ms]
+Results File: /src/trx/_3810a549a860_2026-10-16_07_15_12.trx
+
+Failed!  - Failed:     1, Passed:     1, Skipped:     1, Total:     3, Duration: 7 ms - Fixture.Tests.dll (net8.0)

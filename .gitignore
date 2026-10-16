@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+.claude/
+*.tgz
+__pycache__/
+.pytest_cache/
+test/fixtures/projects/*/target/
+test/fixtures/projects/*/bin/
+test/fixtures/projects/*/obj/

@@ -1,0 +1,24 @@
+{"ImportPath":"example.com/fixture/broken [example.com/fixture/broken.test]","Action":"build-output","Output":"# example.com/fixture/broken [example.com/fixture/broken.test]\n"}
+{"ImportPath":"example.com/fixture/broken [example.com/fixture/broken.test]","Action":"build-output","Output":"broken/x.go:3:23: cannot use \"s\" (untyped string constant) as int value in return statement\n"}
+{"ImportPath":"example.com/fixture/broken [example.com/fixture/broken.test]","Action":"build-fail"}
+{"Time":"2026-10-16T07:16:00.007859794Z","Action":"start","Package":"example.com/fixture/broken"}
+{"Time":"2026-10-16T07:16:00.008110419Z","Action":"output","Package":"example.com/fixture/broken","Output":"FAIL\texample.com/fixture/broken [build failed]\n","OutputType":"frame"}
+{"Time":"2026-10-16T07:16:00.008196836Z","Action":"fail","Package":"example.com/fixture/broken","Elapsed":0,"FailedBuild":"example.com/fixture/broken [example.com/fixture/broken.test]"}
+{"Time":"2026-10-16T07:16:00.125042544Z","Action":"start","Package":"example.com/fixture/mathx"}
+{"Time":"2026-10-16T07:16:00.128986794Z","Action":"run","Package":"example.com/fixture/mathx","Test":"TestAdds"}
+{"Time":"2026-10-16T07:16:00.129723628Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestAdds","Output":"=== RUN   TestAdds\n","OutputType":"frame"}
+{"Time":"2026-10-16T07:16:00.129884003Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestAdds","Output":"--- PASS: TestAdds (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-16T07:16:00.129965753Z","Action":"pass","Package":"example.com/fixture/mathx","Test":"TestAdds","Elapsed":0}
+{"Time":"2026-10-16T07:16:00.130071628Z","Action":"run","Package":"example.com/fixture/mathx","Test":"TestSubtracts"}
+{"Time":"2026-10-16T07:16:00.130154253Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestSubtracts","Output":"=== RUN   TestSubtracts\n","OutputType":"frame"}
+{"Time":"2026-10-16T07:16:00.130235669Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestSubtracts","Output":"    math_test.go:13: 3 - 1 = 2, want 1\n","OutputType":"error"}
+{"Time":"2026-10-16T07:16:00.130348294Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestSubtracts","Output":"--- FAIL: TestSubtracts (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-16T07:16:00.130514086Z","Action":"fail","Package":"example.com/fixture/mathx","Test":"TestSubtracts","Elapsed":0}
+{"Time":"2026-10-16T07:16:00.130625544Z","Action":"run","Package":"example.com/fixture/mathx","Test":"TestDivides"}
+{"Time":"2026-10-16T07:16:00.130692544Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestDivides","Output":"=== RUN   TestDivides\n","OutputType":"frame"}
+{"Time":"2026-10-16T07:16:00.130775419Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestDivides","Output":"    math_test.go:18: not yet\n"}
+{"Time":"2026-10-16T07:16:00.130949253Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestDivides","Output":"--- SKIP: TestDivides (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-16T07:16:00.131022753Z","Action":"skip","Package":"example.com/fixture/mathx","Test":"TestDivides","Elapsed":0}
+{"Time":"2026-10-16T07:16:00.131087044Z","Action":"output","Package":"example.com/fixture/mathx","Output":"FAIL\n","OutputType":"frame"}
+{"Time":"2026-10-16T07:16:00.131265044Z","Action":"output","Package":"example.com/fixture/mathx","Output":"FAIL\texample.com/fixture/mathx\t0.006s\n","OutputType":"frame"}
+{"Time":"2026-10-16T07:16:00.131394586Z","Action":"fail","Package":"example.com/fixture/mathx","Elapsed":0.006}

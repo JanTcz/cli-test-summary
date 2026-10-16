@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="9ee1f4c8-e7c8-429f-af73-12e9edfcd44c" name="@3810a549a860 2026-10-16 07:15:12" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-16T07:15:12.3696486+00:00" queuing="2026-10-16T07:15:12.3696486+00:00" start="2026-10-16T07:15:12.0219231+00:00" finish="2026-10-16T07:15:12.3737544+00:00" />
+  <TestSettings name="default" id="4e877c1a-a71d-4fdb-a599-6b3a18235a61">
+    <Deployment runDeploymentRoot="_3810a549a860_2026-10-16_07_15_12" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="34adfb63-222c-4b39-9c8f-71a27fb1575c" testId="66a8c841-a28d-00a8-1e44-4fc1af8424bb" testName="MathTests.Divides" computerName="3810a549a860" duration="00:00:00.0010000" startTime="2026-10-16T07:15:12.3185592+00:00" endTime="2026-10-16T07:15:12.3185593+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="34adfb63-222c-4b39-9c8f-71a27fb1575c">
+      <Output>
+        <ErrorInfo>
+          <Message>not yet</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2d247d0e-3a7b-4cfe-b9b2-07a1424fa8ff" testId="73c044c7-1a68-f3f0-5cdd-7a4baada3d56" testName="MathTests.Subtracts" computerName="3810a549a860" duration="00:00:00.0011702" startTime="2026-10-16T07:15:12.3181733+00:00" endTime="2026-10-16T07:15:12.3181733+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2d247d0e-3a7b-4cfe-b9b2-07a1424fa8ff">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   2</Message>
+          <StackTrace>   at MathTests.Subtracts() in /src/MathTests.cs:line 9
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="91341d16-9dc3-42cc-9399-8d224b4b7c6f" testId="5f2c0d3d-2879-3dfb-6b9a-3a0f18ab0cd8" testName="MathTests.Adds" computerName="3810a549a860" duration="00:00:00.0033587" startTime="2026-10-16T07:15:12.3114817+00:00" endTime="2026-10-16T07:15:12.3114903+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="91341d16-9dc3-42cc-9399-8d224b4b7c6f" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="MathTests.Divides" storage="/src/bin/debug/net8.0/fixture.tests.dll" id="66a8c841-a28d-00a8-1e44-4fc1af8424bb">
+      <Execution id="34adfb63-222c-4b39-9c8f-71a27fb1575c" />
+      <TestMethod codeBase="/src/bin/Debug/net8.0/Fixture.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="MathTests" name="Divides" />
+    </UnitTest>
+    <UnitTest name="MathTests.Adds" storage="/src/bin/debug/net8.0/fixture.tests.dll" id="5f2c0d3d-2879-3dfb-6b9a-3a0f18ab0cd8">
+      <Execution id="91341d16-9dc3-42cc-9399-8d224b4b7c6f" />
+      <TestMethod codeBase="/src/bin/Debug/net8.0/Fixture.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="MathTests" name="Adds" />
+    </UnitTest>
+    <UnitTest name="MathTests.Subtracts" storage="/src/bin/debug/net8.0/fixture.tests.dll" id="73c044c7-1a68-f3f0-5cdd-7a4baada3d56">
+      <Execution id="2d247d0e-3a7b-4cfe-b9b2-07a1424fa8ff" />
+      <TestMethod codeBase="/src/bin/Debug/net8.0/Fixture.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="MathTests" name="Subtracts" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="66a8c841-a28d-00a8-1e44-4fc1af8424bb" executionId="34adfb63-222c-4b39-9c8f-71a27fb1575c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="73c044c7-1a68-f3f0-5cdd-7a4baada3d56" executionId="2d247d0e-3a7b-4cfe-b9b2-07a1424fa8ff" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5f2c0d3d-2879-3dfb-6b9a-3a0f18ab0cd8" executionId="91341d16-9dc3-42cc-9399-8d224b4b7c6f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="2" passed="1" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.32)
+[xUnit.net 00:00:00.03]   Discovering: Fixture.Tests
+[xUnit.net 00:00:00.05]   Discovered:  Fixture.Tests
+[xUnit.net 00:00:00.05]   Starting:    Fixture.Tests
+[xUnit.net 00:00:00.08]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:00.08]       Expected: 1
+[xUnit.net 00:00:00.08]       Actual:   2
+[xUnit.net 00:00:00.08]       Stack Trace:
+[xUnit.net 00:00:00.08]         /src/MathTests.cs(9,0): at MathTests.Subtracts()
+[xUnit.net 00:00:00.08]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:00.08]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.08]       not yet
+[xUnit.net 00:00:00.08]   Finished:    Fixture.Tests
+Test 'MathTests.Divides' was skipped in the test run.
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="3810a549a860" outcome="Error" timestamp="2026-10-16T07:15:12.3176503+00:00">
+        <Text>[xUnit.net 00:00:00.08]     MathTests.Subtracts [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="3810a549a860" outcome="Warning" timestamp="2026-10-16T07:15:12.3185304+00:00">
+        <Text>[xUnit.net 00:00:00.08]     MathTests.Divides [SKIP]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

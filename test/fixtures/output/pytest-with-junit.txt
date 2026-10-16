@@ -1,0 +1,21 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0
+rootdir: /work/pytest
+configfile: pyproject.toml
+plugins: anyio-4.12.1
+collected 3 items
+
+tests/test_math.py .Fs                                                   [100%]
+
+=================================== FAILURES ===================================
+________________________________ test_subtracts ________________________________
+
+    def test_subtracts():
+>       assert 3 - 1 == 1
+E       assert (3 - 1) == 1
+
+tests/test_math.py:9: AssertionError
+- generated xml file: /tmp/cli-test-summary/pytest.xml -
+=========================== short test summary info ============================
+FAILED tests/test_math.py::test_subtracts - assert (3 - 1) == 1
+==================== 1 failed, 1 passed, 1 skipped in 0.05s ====================

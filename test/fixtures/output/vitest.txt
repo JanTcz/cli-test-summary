@@ -1,0 +1,40 @@
+
+> test
+> vitest run
+
+
+ RUN  v3.2.4 /work/vitest
+
+ ❯ test/math.test.js (3 tests | 1 failed | 1 skipped) 5ms
+   ✓ math > adds 1ms
+   × math > subtracts 3ms
+     → expected 2 to be 1 // Object.is equality
+   ↓ math > divides
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/math.test.js > math > subtracts
+AssertionError: expected 2 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ test/math.test.js:5:41
+      3| describe('math', () => {
+      4|   test('adds', () => expect(1 + 1).toBe(2));
+      5|   test('subtracts', () => expect(3 - 1).toBe(1));
+       |                                         ^
+      6|   test.skip('divides', () => {});
+      7| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed | 1 skipped (3)
+   Start at  09:14:43
+   Duration  391ms (transform 17ms, setup 0ms, collect 10ms, tests 5ms, environment 0ms, prepare 131ms)
+

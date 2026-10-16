@@ -1,0 +1,21 @@
+{"Time":"2026-10-16T07:14:19.327407553Z","Action":"start","Package":"example.com/fixture/broken"}
+{"Time":"2026-10-16T07:14:19.328705095Z","Action":"output","Package":"example.com/fixture/broken","Output":"FAIL\texample.com/fixture/broken [build failed]\n"}
+{"Time":"2026-10-16T07:14:19.329647428Z","Action":"fail","Package":"example.com/fixture/broken","Elapsed":0.002}
+{"Time":"2026-10-16T07:14:19.393119262Z","Action":"start","Package":"example.com/fixture/mathx"}
+{"Time":"2026-10-16T07:14:19.394403012Z","Action":"run","Package":"example.com/fixture/mathx","Test":"TestAdds"}
+{"Time":"2026-10-16T07:14:19.394509387Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestAdds","Output":"=== RUN   TestAdds\n"}
+{"Time":"2026-10-16T07:14:19.394587137Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestAdds","Output":"--- PASS: TestAdds (0.00s)\n"}
+{"Time":"2026-10-16T07:14:19.394618553Z","Action":"pass","Package":"example.com/fixture/mathx","Test":"TestAdds","Elapsed":0}
+{"Time":"2026-10-16T07:14:19.394687887Z","Action":"run","Package":"example.com/fixture/mathx","Test":"TestSubtracts"}
+{"Time":"2026-10-16T07:14:19.394725387Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestSubtracts","Output":"=== RUN   TestSubtracts\n"}
+{"Time":"2026-10-16T07:14:19.394755387Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestSubtracts","Output":"    math_test.go:13: 3 - 1 = 2, want 1\n"}
+{"Time":"2026-10-16T07:14:19.394789553Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestSubtracts","Output":"--- FAIL: TestSubtracts (0.00s)\n"}
+{"Time":"2026-10-16T07:14:19.394814012Z","Action":"fail","Package":"example.com/fixture/mathx","Test":"TestSubtracts","Elapsed":0}
+{"Time":"2026-10-16T07:14:19.39484172Z","Action":"run","Package":"example.com/fixture/mathx","Test":"TestDivides"}
+{"Time":"2026-10-16T07:14:19.394869803Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestDivides","Output":"=== RUN   TestDivides\n"}
+{"Time":"2026-10-16T07:14:19.394892845Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestDivides","Output":"    math_test.go:18: not yet\n"}
+{"Time":"2026-10-16T07:14:19.394919845Z","Action":"output","Package":"example.com/fixture/mathx","Test":"TestDivides","Output":"--- SKIP: TestDivides (0.00s)\n"}
+{"Time":"2026-10-16T07:14:19.39494122Z","Action":"skip","Package":"example.com/fixture/mathx","Test":"TestDivides","Elapsed":0}
+{"Time":"2026-10-16T07:14:19.394962095Z","Action":"output","Package":"example.com/fixture/mathx","Output":"FAIL\n"}
+{"Time":"2026-10-16T07:14:19.39500347Z","Action":"output","Package":"example.com/fixture/mathx","Output":"FAIL\texample.com/fixture/mathx\t0.002s\n"}
+{"Time":"2026-10-16T07:14:19.395036095Z","Action":"fail","Package":"example.com/fixture/mathx","Elapsed":0.002}
